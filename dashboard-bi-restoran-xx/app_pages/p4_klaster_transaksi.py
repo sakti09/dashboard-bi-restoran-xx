@@ -1,5 +1,4 @@
-"""Halaman 4 — Klaster Transaksi (pemilik). Menampilkan HASIL klaster (data), bukan
-metrik teknis. Skema rekomendasi penelitian VERSI ROMBAK (3 fitur: X1 frek_makanan,
+"""Halaman 4 — Klaster Transaksi (pemilik). Menampilkan HASIL klaster (data). Skema rekomendasi penelitian (3 fitur: X1 frek_makanan,
 X2 frek_minuman, X3 total_net; winsorize p99; K-Means++ K=2) berprofil & berlabel
 segmen + rekomendasi bisnis. Pengguna dapat memilih kombinasi fitur lain (boleh lebih
 dari 2 fitur) — hasilnya bernomor klaster tanpa pelabelan segmen. Custom amount
@@ -124,7 +123,7 @@ _md(f'<div class="src-pill">Fitur: <strong>{fitur_txt}</strong> &middot; '
     f'Praproses: <strong>winsorize p99 + Z-score</strong> &middot; '
     f'Jumlah klaster: <strong>{k_used}</strong> &middot; {num(len(nota))} nota</div>')
 if is_reco:
-    st.caption("Skema penelitian tingkat transaksi (versi rombak) — fitur sederhana X1 frekuensi "
+    st.caption("Skema penelitian tingkat transaksi  — fitur sederhana X1 frekuensi "
                "makanan, X2 frekuensi minuman, X3 nilai belanja; lolos uji VIF (seluruhnya di "
                "bawah 10). K=2 ditetapkan dari Silhouette tertinggi 0,5176 (kategori struktur "
                "'baik') yang diselaraskan DBI (kandidat rentang 0,02). Custom amount tetap "
@@ -295,7 +294,7 @@ if is_reco:
             f'<strong>Klaster {c} &middot; {r["segmen"]}</strong></div>'
             f'<div class="prof-stats">{stats}</div>'
             f'<p class="prof-reko">{r["rekomendasi_BI"]}</p></div>')
-    st.caption("Segmen & rekomendasi mengikuti hasil penelitian (versi rombak): karakterisasi "
+    st.caption("Segmen & rekomendasi mengikuti hasil penelitian : karakterisasi "
                "nilai belanja relatif median (ambang 15%) dan komposisi frekuensi "
                "makanan–minuman. Pada dataset penelitian terbentuk dua segmen: Nota Besar "
                "Campuran (21,1% nota; 46,5% pendapatan) dan Nota Menengah Campuran "
