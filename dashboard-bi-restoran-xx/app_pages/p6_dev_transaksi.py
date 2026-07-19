@@ -45,7 +45,7 @@ feats = c[1].multiselect(
     "Fitur klaster (pilih 1..maks; boleh lebih dari 2 fitur)",
     trx.CANDIDATE_FEATURES, default=list(trx.TRX_FEATURES),
     format_func=lambda f: trx.FEATURE_LABEL.get(f, f))
-st.caption("Rekomendasi fitur penelitian versi rombak (hasil uji VIF — seluruhnya di bawah "
+st.caption("Rekomendasi fitur penelitian (hasil uji VIF — seluruhnya di bawah "
            "ambang 10): Frekuensi makanan + Frekuensi minuman + Nilai belanja (net). "
            "Kombinasi lain boleh dieksplorasi untuk kepentingan pengembang; mutu klaster "
            "yang dihasilkan dapat lebih rendah dan tidak diberi pelabelan segmen.")
