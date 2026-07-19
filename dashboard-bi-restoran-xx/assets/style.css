@@ -1,0 +1,186 @@
+/* =====================================================================
+   Dashboard BI Restoran X — Central Design Tokens & Components
+   Tema: DARK (hitam-arang) + aksen OLIVE/SAGE + highlight KRIM
+   Semua variabel desain dipusatkan di sini (RGB/HEX).
+   ===================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root{
+  /* --- base gelap --- */
+  --bg:            #0d0e0c;   /* latar utama, near-black hangat */
+  --bg-soft:       #121410;   /* sidebar / panel */
+  --surface:       #1a1d16;   /* kartu */
+  --surface-2:     #232720;   /* hover / elevated */
+  --border:        #2d3227;
+  --border-soft:   #222720;
+
+  /* --- skala olive / sage (aksen) --- */
+  --olive-100:#eef1e4; --olive-200:#d6ddbf; --olive-300:#bcc79a;
+  --olive-400:#9fae72; --olive-500:#86974f; --olive-600:#6c7d3c; --olive-700:#54632e;
+
+  --primary:       #90a857;   /* aksen utama (tombol, aktif) */
+  --primary-700:   #738a42;
+  --primary-soft:  rgba(144,168,87,.14);
+  --primary-line:  rgba(144,168,87,.40);
+
+  /* --- krim / highlight hangat --- */
+  --cream:         #ece6d5;
+  --cream-2:       #cfc9b4;
+
+  /* --- teks --- */
+  --text:          #e9ebe2;
+  --text-muted:    #a4aa94;
+  --text-dim:      #74795f;
+
+  /* --- bentuk --- */
+  --radius:14px; --radius-sm:10px; --radius-xs:8px;
+  --shadow:0 8px 28px rgba(0,0,0,.38);
+  --shadow-sm:0 3px 12px rgba(0,0,0,.30);
+  --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-display:'Space Grotesk','Inter',sans-serif;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+  -webkit-font-smoothing:antialiased;
+  font-size:14px;
+  line-height:1.55;
+}
+
+/* ============================ LAYOUT ============================ */
+.layout{display:flex;min-height:100vh;background:var(--bg);}
+
+/* --- sidebar --- */
+.sidebar{
+  width:258px;flex-shrink:0;background:var(--bg-soft);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;padding:22px 16px;
+}
+.sidebar-brand{padding:6px 8px 18px;}
+.sidebar-brand h1{
+  font-family:var(--font-display);font-size:17px;letter-spacing:.14em;
+  color:var(--primary);margin:0;font-weight:700;
+}
+.sidebar-brand p{margin:3px 0 0;font-size:12px;color:var(--text-dim);letter-spacing:.04em;}
+
+.sidebar-nav{display:flex;flex-direction:column;gap:3px;margin-top:6px;}
+.sidebar-nav a{
+  display:flex;align-items:center;gap:11px;
+  padding:10px 12px;border-radius:var(--radius-sm);
+  color:var(--text-muted);text-decoration:none;font-size:13.5px;font-weight:500;
+  position:relative;transition:all .16s ease;
+}
+.sidebar-nav a svg{width:18px;height:18px;stroke-width:2;flex-shrink:0;}
+.sidebar-nav a:hover{background:var(--surface);color:var(--text);}
+.sidebar-nav a.active{
+  background:var(--primary-soft);color:var(--olive-200);font-weight:600;
+}
+.sidebar-nav a.active::before{
+  content:"";position:absolute;left:0;top:18%;height:64%;width:3px;
+  border-radius:0 3px 3px 0;background:var(--primary);
+}
+.nav-soon{margin-left:auto;font-size:9.5px;letter-spacing:.06em;
+  color:var(--text-dim);border:1px solid var(--border);border-radius:20px;padding:2px 7px;}
+
+.sidebar-footer{
+  margin-top:auto;padding:14px 8px 2px;border-top:1px solid var(--border-soft);
+  font-size:11.5px;color:var(--text-dim);line-height:1.5;
+}
+
+/* --- main --- */
+.main{flex:1;padding:34px 40px 48px;overflow-y:auto;}
+.page-header h1{
+  font-family:var(--font-display);font-size:25px;font-weight:600;margin:0;color:var(--text);
+  letter-spacing:-.01em;
+}
+.page-header p{margin:7px 0 0;color:var(--text-muted);font-size:14px;}
+.divider{height:1px;background:var(--border);margin:22px 0 26px;border:0;}
+
+/* ============================ KARTU MENU ============================ */
+.menu-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(236px,1fr));gap:18px;
+}
+.menu-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:22px 20px;
+  display:flex;flex-direction:column;text-decoration:none;
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+  position:relative;overflow:hidden;
+}
+.menu-card::after{
+  content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,var(--primary),transparent);
+  opacity:0;transition:opacity .18s ease;
+}
+.menu-card:hover{transform:translateY(-3px);border-color:var(--primary-line);box-shadow:var(--shadow);}
+.menu-card:hover::after{opacity:1;}
+.menu-card.soon{opacity:.62;}
+.menu-card.soon:hover{transform:none;border-color:var(--border);box-shadow:none;}
+.menu-card-icon{
+  width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  background:var(--primary-soft);color:var(--primary);margin-bottom:15px;
+}
+.menu-card-icon svg{width:23px;height:23px;stroke-width:2;}
+.menu-card h3{margin:0 0 7px;font-size:15.5px;color:var(--text);font-weight:600;}
+.menu-card p{margin:0 0 18px;font-size:12.8px;color:var(--text-muted);flex:1;line-height:1.55;}
+
+/* ============================ TOMBOL ============================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  border:none;border-radius:var(--radius-xs);padding:9px 16px;
+  font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;
+  text-decoration:none;transition:background .15s ease,transform .1s ease;
+}
+.btn-primary{background:var(--primary);color:#15170d;}
+.btn-primary:hover{background:var(--primary-700);}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text-muted);}
+.btn-ghost:hover{border-color:var(--primary-line);color:var(--text);}
+.btn-block{width:100%;}
+
+/* ============================ KARTU UMUM ============================ */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;}
+.card-cream{
+  margin-top:24px;
+  background:linear-gradient(135deg,rgba(108,125,60,.16),rgba(26,29,22,.6));
+  border:1px solid var(--olive-700);
+}
+.card-cream h3{font-family:var(--font-display);font-size:14px;color:var(--cream);margin:0 0 9px;font-weight:600;letter-spacing:.02em;}
+.card-cream p{font-size:12.8px;color:var(--cream-2);line-height:1.65;margin:0;}
+.card-cream strong{color:var(--olive-200);font-weight:600;}
+
+/* --- chip stat kecil (dipakai halaman lain) --- */
+.stat-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:14px 18px;min-width:130px;}
+.stat .v{font-family:var(--font-display);font-size:21px;font-weight:600;color:var(--primary);}
+.stat .l{font-size:11.5px;color:var(--text-muted);margin-top:2px;letter-spacing:.03em;}
+
+/* --- elemen halaman dataset --- */
+.src-pill{ display:inline-block; background:var(--surface); border:1px solid var(--border);
+  border-radius:20px; padding:7px 14px; font-size:12.5px; color:var(--text-muted); }
+.src-pill strong{ color:var(--olive-200); font-weight:600; }
+.panel-title{ font-family:var(--font-display); font-size:12px; letter-spacing:.06em;
+  color:var(--text-muted); text-transform:uppercase; margin:20px 0 9px; }
+.col-chips{ display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 4px; }
+.col-chip{ background:var(--surface-2); border:1px solid var(--border); border-radius:6px;
+  padding:3px 9px; font-size:11.5px; color:var(--text-muted); font-family:var(--font-display); }
+.col-chip.req{ border-color:var(--primary-line); color:var(--olive-200); background:var(--primary-soft); }
+
+/* --- chip ringkasan klaster (halaman 3) --- */
+.cl-row{ display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 6px; }
+.cl-chip{ display:flex; align-items:center; gap:8px; background:var(--surface);
+  border:1px solid var(--border); border-radius:20px; padding:6px 13px;
+  font-size:12px; color:var(--text-muted); }
+.cl-dot{ width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+
+/* --- kartu profil segmen (halaman 4 transaksi) --- */
+.prof-card{ padding:15px 18px; }
+.prof-head{ display:flex; align-items:center; gap:9px; margin-bottom:9px; }
+.prof-head strong{ font-size:14px; color:var(--text); font-weight:600; }
+.prof-stats{ display:flex; flex-wrap:wrap; gap:7px 18px; font-size:12.4px; color:var(--text-muted); }
+.prof-stats strong{ color:var(--olive-200); font-weight:600; }
+.prof-reko{ margin:10px 0 0; font-size:12.3px; color:var(--cream-2); line-height:1.6; }

@@ -1,0 +1,121 @@
+/* =====================================================================
+   streamlit.css — Override chrome bawaan Streamlit agar mengikuti
+   design token (assets/style.css). Diinjeksi setelah style.css.
+   ===================================================================== */
+
+/* --- kerangka aplikasi --- */
+.stApp, [data-testid="stAppViewContainer"]{ background: var(--bg) !important; }
+[data-testid="stHeader"]{ background: transparent !important; height: 0 !important; }
+[data-testid="stToolbar"]{ right: 12px; }
+#MainMenu, footer, [data-testid="stStatusWidget"]{ visibility: hidden; }
+.block-container{ padding: 30px 42px 60px !important; max-width: 1280px; }
+
+/* --- sidebar --- */
+[data-testid="stSidebar"]{
+  background: var(--bg-soft) !important;
+  border-right: 1px solid var(--border);
+}
+[data-testid="stSidebar"] > div{ padding-top: 8px; }
+
+/* brand & footer kustom yang kita injeksi via st.markdown */
+.sb-brand{ padding: 6px 6px 14px; }
+.sb-brand h1{ font-family:var(--font-display); font-size:17px; letter-spacing:.14em;
+  color:var(--primary); margin:0; font-weight:700; }
+.sb-brand p{ margin:3px 0 0; font-size:12px; color:var(--text-dim); letter-spacing:.04em; }
+.sb-foot{ margin-top:18px; padding:14px 6px 2px; border-top:1px solid var(--border-soft);
+  font-size:11.5px; color:var(--text-dim); line-height:1.5; }
+.sb-foot strong{ color:var(--text-muted); }
+
+/* nav bawaan st.navigation */
+[data-testid="stSidebarNav"]{ padding-top: 0; }
+[data-testid="stSidebarNav"] ul{ gap: 2px; }
+[data-testid="stSidebarNav"] a{
+  border-radius: var(--radius-sm); padding: 9px 12px !important; transition: all .15s ease;
+}
+[data-testid="stSidebarNav"] a:hover{ background: var(--surface) !important; }
+[data-testid="stSidebarNav"] a span{ color: var(--text-muted); font-size: 13.5px; font-weight: 500; }
+[data-testid="stSidebarNav"] a[aria-current="page"]{ background: var(--primary-soft) !important; }
+[data-testid="stSidebarNav"] a[aria-current="page"] span{ color: var(--olive-200); font-weight: 600; }
+
+/* --- tipografi heading default --- */
+h1,h2,h3,h4{ font-family: var(--font-display); color: var(--text); }
+p,li,label,span{ color: var(--text); }
+
+/* --- tombol Streamlit --- */
+.stButton > button, .stDownloadButton > button{
+  background: var(--primary); color:#15170d; border:none; border-radius:var(--radius-xs);
+  font-weight:600; padding:9px 16px; transition: background .15s ease;
+}
+.stButton > button:hover, .stDownloadButton > button:hover{ background: var(--primary-700); color:#15170d; }
+.stButton > button[kind="secondary"]{
+  background: transparent; color: var(--text-muted); border:1px solid var(--border);
+}
+.stButton > button[kind="secondary"]:hover{ border-color: var(--primary-line); color: var(--text); }
+
+/* --- nav kustom via st.page_link di sidebar --- */
+.nav-group{ font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--text-dim); margin:16px 6px 5px; font-weight:600; }
+[data-testid="stSidebar"] [data-testid="stPageLink"]{ margin:1px 0; }
+[data-testid="stSidebar"] [data-testid="stPageLink"] a{
+  display:flex; align-items:center; gap:10px; padding:9px 12px;
+  border-radius:var(--radius-sm); background:transparent; text-decoration:none;
+  transition:all .15s ease;
+}
+[data-testid="stSidebar"] [data-testid="stPageLink"] a:hover{ background:var(--surface); }
+[data-testid="stSidebar"] [data-testid="stPageLink"] a p{
+  color:var(--text-muted) !important; font-size:13.5px; font-weight:500; }
+[data-testid="stSidebar"] [data-testid="stPageLink"] a[aria-current="page"]{ background:var(--primary-soft); }
+[data-testid="stSidebar"] [data-testid="stPageLink"] a[aria-current="page"] p{
+  color:var(--olive-200) !important; font-weight:600; }
+
+/* --- pastikan teks kartu tidak tergaris-bawah / berwarna link --- */
+.menu-card, .menu-card:link, .menu-card:visited, .menu-card:hover{
+  text-decoration:none !important; color:inherit !important; }
+.menu-card *{ text-decoration:none !important; }
+.menu-card h3{ color:var(--text) !important; }
+.menu-card p{ color:var(--text-muted) !important; }
+.menu-card .btn-primary{ color:#15170d !important; }
+.menu-card .btn-ghost{ color:var(--text-muted) !important; }
+
+/* --- input / widget --- */
+[data-baseweb="select"] > div, .stTextInput input, .stNumberInput input{
+  background: var(--surface) !important; border-color: var(--border) !important; color: var(--text) !important;
+}
+.stSlider [data-baseweb="slider"] div[role="slider"]{ background: var(--primary) !important; }
+[data-testid="stWidgetLabel"] label, [data-testid="stWidgetLabel"] p{ color: var(--text-muted) !important; font-size:13px; }
+
+/* --- metric --- */
+[data-testid="stMetric"]{
+  background: var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm);
+  padding:14px 18px;
+}
+[data-testid="stMetricValue"]{ color: var(--primary); font-family: var(--font-display); }
+[data-testid="stMetricLabel"] p{ color: var(--text-muted) !important; }
+
+/* --- dataframe --- */
+[data-testid="stDataFrame"]{ border:1px solid var(--border); border-radius:var(--radius-sm); }
+
+/* --- tabs --- */
+.stTabs [data-baseweb="tab-list"]{ gap: 4px; border-bottom:1px solid var(--border); }
+.stTabs [data-baseweb="tab"]{ color: var(--text-muted); }
+.stTabs [aria-selected="true"]{ color: var(--primary) !important; }
+
+/* --- file uploader --- */
+[data-testid="stFileUploaderDropzone"]{
+  background: var(--surface); border:1px dashed var(--border); border-radius:var(--radius-sm);
+}
+
+/* --- alert/info --- */
+[data-testid="stAlert"]{ border-radius: var(--radius-sm); }
+
+/* --- divider --- */
+hr{ border-color: var(--border); }
+
+/* --- badge under-construction --- */
+.uc-wrap{ display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:60px 30px; background:var(--surface); border:1px dashed var(--border);
+  border-radius:var(--radius); margin-top:10px; }
+.uc-wrap .uc-ic{ width:54px;height:54px;border-radius:14px;background:var(--primary-soft);
+  color:var(--primary); display:flex;align-items:center;justify-content:center; margin-bottom:16px; }
+.uc-wrap h3{ margin:0 0 8px; color:var(--text); font-size:18px; }
+.uc-wrap p{ margin:0; color:var(--text-muted); font-size:13.5px; max-width:440px; }
