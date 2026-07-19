@@ -107,7 +107,7 @@ with g[2]:
                     use_container_width=True)
 if is_reco:
     st.caption(f"Silhouette maksimum pada K={k_sil}; DBI minimum pada K={k_dbi}. "
-               f"K yang dipakai: {k_pakai} (mengikuti kesimpulan penelitian versi rombak — "
+               f"K yang dipakai: {k_pakai} (mengikuti kesimpulan penelitian versi  — "
                f"Silhouette tertinggi 0,5176 berkategori struktur 'baik', diselaraskan DBI, "
                f"kandidat dalam rentang ±0,02).")
 else:
