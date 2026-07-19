@@ -1,11 +1,7 @@
 # Dashboard BI Restoran X
 
 Business Intelligence Dashboard untuk segmentasi penjualan menggunakan **K-Means++**.
-Skripsi Desak 2208561143 — Informatika, Universitas Udayana, 2026.
 
-## Skema Pemodelan (Versi Rombak)
-
-Mengikuti Notebook 03 & 04 versi rombak:
 
 - **Klaster Menu** — penyaringan: hanya `payment`; kategori `complimentary` & `refund`
   selalu dibuang; `custom amount` dibuang dari pemodelan menu (batasan penelitian).
@@ -54,11 +50,7 @@ dashboard-bi-restoran-x/
 └── .streamlit/config.toml   # tema dark + olive
 ```
 
-## Tema
 
-Seluruh variabel desain dipusatkan di `assets/style.css` (`:root { ... }`).
-Tema gelap (hitam-arang) dengan aksen olive/sage. Untuk mengubah warna,
-cukup ubah variabel di blok `:root`.
 
 ## Format Data Masukan
 
@@ -66,7 +58,4 @@ Dataset yang diunggah harus mengikuti struktur **hasil ekspor langsung POS**
 (master final), berformat `.csv` atau `.xlsx`. Kolom inti yang wajib ada:
 `items, quantity, net_sales, gross_sales, category`.
 
-## Status
 
-Modul tingkat menu (Beranda, Lihat Dataset, Klaster Menu, Developer · Menu)
-dikerjakan terlebih dahulu. Modul tingkat transaksi dikembangkan pada tahap lanjutan.
