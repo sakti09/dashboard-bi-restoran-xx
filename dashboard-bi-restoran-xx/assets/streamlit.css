@@ -1,8 +1,3 @@
-/* =====================================================================
-   streamlit.css — Override chrome bawaan Streamlit agar mengikuti
-   design token (assets/style.css). Diinjeksi setelah style.css.
-   ===================================================================== */
-
 /* --- kerangka aplikasi --- */
 .stApp, [data-testid="stAppViewContainer"]{ background: var(--bg) !important; }
 [data-testid="stHeader"]{ background: transparent !important; height: 0 !important; }
